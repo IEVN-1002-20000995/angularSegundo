@@ -1,0 +1,30 @@
+<h1>ZODAICO LARAVEL BIENVENIDO</h1>
+
+<div class="form-container">
+    <form [formGroup]!="formGroup" (ngSubmit)="subImprimir()">
+      <label>Nombre:</label>
+      <input type="text" formControlName="nombre" />
+  
+      <label>Apellido Paterno:</label>
+      <input type="text" formControlName="apaterno" />
+  
+      <label>Apellido Materno:</label>
+      <input type="text" formControlName="amaterno" />
+  
+      <label>Fecha de Nacimiento:</label>
+      <input type="number" placeholder="Día" formControlName="dia" />
+      <input type="number" placeholder="Mes" formControlName="mes" />
+      <input type="number" placeholder="Año" formControlName="anio" />
+  
+      <label>Sexo:</label>
+      <select formControlName="sexo">
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+      </select>
+  
+      <button type="submit">Imprimir</button>
+    </form>
+  
+    <p>{{ mensaje }}</p>
+  </div>
+  
