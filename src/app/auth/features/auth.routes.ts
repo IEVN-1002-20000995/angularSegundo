@@ -9,6 +9,14 @@ export default[
 {
  path:'sign-up'   ,
  loadComponent:()=>import('./sign-up/sign-up.component')
+},
+{
+ path:'zodiaco'   ,
+ loadComponent:()=>import('./zodiaco/zodiaco.component')
+},
+{
+ path:'ejemplo1'   ,
+ loadComponent:()=>import('/Analitica/PWA-1002/angularSegundo/src/app/formulario/ejemplo1/ejemplo1.component')
 }
 
 ] as Routes

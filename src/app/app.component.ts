@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Ejemplo1Component } from "./formulario/ejemplo1/ejemplo1.component";
-import { ZodiacoComponent } from "./Actividades/zodiaco/zodiaco.component";
+import { ZodiacoComponent } from "./auth/features/zodiaco/zodiaco.component";
 
 @Component({
   selector: 'app-root',
