@@ -1,0 +1,89 @@
+<div class="grid grid-col gap-4">
+  <h1>Registro de Empleados</h1>
+
+  <form [formGroup]="formGroup" (ngSubmit)="registrarEmpleado()" class="max-w-sm mx-auto">
+    <!-- Matrícula -->
+    <div class="mb-5">
+      <label for="matricula" class="block mb-2 text-sm font-medium">Matrícula</label>
+      <input type="text" id="matricula" formControlName="matricula" required
+             class="bg-gray-50 border border-gray-300 text-sm rounded-lg p-2.5 block w-full" />
+    </div>
+
+    <!-- Nombre -->
+    <div class="mb-5">
+      <label for="nombre" class="block mb-2 text-sm font-medium">Nombre del Empleado</label>
+      <input type="text" id="nombre" formControlName="nombre" required
+             class="bg-gray-50 border border-gray-300 text-sm rounded-lg p-2.5 block w-full" />
+    </div>
+
+    <!-- Correo -->
+    <div class="mb-5">
+      <label for="correo" class="block mb-2 text-sm font-medium">Correo Electrónico</label>
+      <input type="email" id="correo" formControlName="correo" required
+             class="bg-gray-50 border border-gray-300 text-sm rounded-lg p-2.5 block w-full" />
+    </div>
+
+    <!-- Edad -->
+    <div class="mb-5">
+      <label for="edad" class="block mb-2 text-sm font-medium">Edad (18 a 65 años)</label>
+      <input type="number" id="edad" formControlName="edad" min="18" max="65" required
+             class="bg-gray-50 border border-gray-300 text-sm rounded-lg p-2.5 block w-full" />
+    </div>
+
+    <!-- Horas Trabajadas -->
+    <div class="mb-5">
+      <label for="horas" class="block mb-2 text-sm font-medium">Horas Trabajadas</label>
+      <input type="number" id="horas" formControlName="horas" min="0" required
+             class="bg-gray-50 border border-gray-300 text-sm rounded-lg p-2.5 block w-full" />
+    </div>
+
+    <!-- Botones -->
+    <button type="submit" class="text-white bg-blue-700 px-5 py-2.5 rounded-lg w-full">
+      {{ editando ? 'Actualizar Empleado' : 'Registrar Empleado' }}
+    </button>
+
+    <button type="button" (click)="imprimirTabla()" class="mt-2 text-white bg-green-700 px-5 py-2.5 rounded-lg w-full">
+      Imprimir Tabla
+    </button>
+  </form>
+
+  <!-- Tabla (Oculta hasta que se imprima) -->
+  <div *ngIf="mostrarTabla" class="mt-10">
+    <h2 class="text-lg font-medium mb-4">Lista de Empleados</h2>
+    <table class="w-full border-collapse border border-gray-300">
+      <thead>
+        <tr>
+          <th class="border px-4 py-2">Matrícula</th>
+          <th class="border px-4 py-2">Nombre</th>
+          <th class="border px-4 py-2">Correo</th>
+          <th class="border px-4 py-2">Edad</th>
+          <th class="border px-4 py-2">Horas Trabajadas</th>
+          <th class="border px-4 py-2">Horas x Pagar</th>
+          <th class="border px-4 py-2">Horas Extras</th>
+          <th class="border px-4 py-2">Subtotal</th>
+          <th class="border px-4 py-2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empleado of empleados">
+          <td class="border px-4 py-2">{{ empleado.matricula }}</td>
+          <td class="border px-4 py-2">{{ empleado.nombre }}</td>
+          <td class="border px-4 py-2">{{ empleado.correo }}</td>
+          <td class="border px-4 py-2">{{ empleado.edad }}</td>
+          <td class="border px-4 py-2">{{ empleado.horas }}</td>
+          <td class="border px-4 py-2">{{ calcularPagoHorasBase(empleado.horas) | currency:'MXN' }}</td>
+          <td class="border px-4 py-2">{{ calcularPagoHorasExtras(empleado.horas) | currency:'MXN' }}</td>
+          <td class="border px-4 py-2">{{ calcularSubtotal(empleado.horas) | currency:'MXN' }}</td>
+          <td class="border px-4 py-2">
+            <button (click)="editarEmpleado(empleado)" class="text-blue-500">Modificar</button>
+            <button (click)="eliminarEmpleado(empleado.matricula)" class="text-red-500">Eliminar</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="7" class="border px-4 py-2 font-bold text-right">Total a Pagar</td>
+          <td class="border px-4 py-2 font-bold">{{ calcularTotal() | currency:'MXN' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

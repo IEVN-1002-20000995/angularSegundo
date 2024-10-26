@@ -4,9 +4,9 @@
   <div class="col-start-2">
     <form [formGroup]="formGroup" (ngSubmit)="subImprimir()" class="max-w-sm mx-auto">
 
-      <div class="mb-5">
+      <div class="mb-5"> <!-- Datos personales -->
         DATOS PERSONALES
-        <div class="mb-5">
+        <div class="mb-5">  <!-- NOMBRE -->
           <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Nombre
           </label>
@@ -20,7 +20,7 @@
           />
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5">  <!-- APELLLIDO PATERNO -->
           <label for="apellidoPaterno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Apellido Paterno
           </label>
@@ -34,7 +34,7 @@
           />
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5">  <!-- APELLIDO MANETRNO -->
           <label for="apellidoMaterno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Apellido Materno
           </label>
@@ -49,8 +49,7 @@
         </div>
       </div>
 
-      <fieldset class="mb-5">
-
+      <fieldset class="mb-5">   <!-- Fecha de nacimiento -->
         <!-- <legend class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> -->
           Fecha de Nacimiento
         <!-- </legend> -->
@@ -84,7 +83,7 @@
         </div>
       </fieldset>
 
-      <fieldset class="mb-5">
+      <fieldset class="mb-5">  <!-- Sexo -->
         <legend class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
           Sexo
         </legend>

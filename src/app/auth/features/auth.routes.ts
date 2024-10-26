@@ -15,6 +15,10 @@ export default[
  loadComponent:()=>import('./zodiaco/zodiaco.component')
 },
 {
+ path:'empleados'   ,
+ loadComponent:()=>import('./empleados/empleados.component')
+},
+{
  path:'ejemplo1'   ,
  loadComponent:()=>import('/Analitica/PWA-1002/angularSegundo/src/app/formulario/ejemplo1/ejemplo1.component')
 }
